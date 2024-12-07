@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>RiceMode</title> 
+    <link rel="icon" type="image/x-icon" href="image/image1.png"> 
+    <style>
+        /* Đặt màu nền pha giữa xanh biển và xanh trời cho toàn bộ trang */
+        body {
+            background: linear-gradient(135deg, #87CEFA, #4682B4); /* Xanh trời và xanh biển */
+            font-family: Arial, sans-serif;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Đảm bảo trang hỗ trợ cuộn */
+        html, body {
+            height: 100%;
+            overflow-y: auto;
+        }
+
+        /* Giao diện RiceMode */
+        .rice-mode {
+            display: flex;
+            align-items: center;
+            background-color: #cfe2ff;
+            padding: 10px 20px;
+            border-radius: 10px;
+            width: fit-content;
+            font-family: Arial, sans-serif;
+            color: black;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 10;
+        }
+
+        .rice-mode .icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+            background: url('image/icon.png') no-repeat center center;
+            background-size: contain;
+        }
+
+        .rice-mode .text {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        /* Nút mục lục */
+        #toggle-btn {
+            padding: 15px;
+            background-color: rgba(0, 0, 0, 0.5); /* Nền trong suốt */
+            color: white;
+            border: none;
+            cursor: pointer;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            font-size: 16px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10; /* Đảm bảo nút luôn hiển thị trên mục lục */
+            width: 50px;  /* Chiều rộng của nút */
+            height: 50px; /* Chiều cao của nút */
+        }
+
+        /* Mục lục */
+        #toc {
+            display: none;
+            background-color: rgba(135, 206, 250, 0.9);
+            border: 1px solid #ccc;
+            padding: 15px;
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            width: 250px;
+            height: 120px; /* Giới hạn chiều cao */
+            overflow-y: auto; /* Thêm cuộn dọc */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 5;
+        }
+
+        #toc h4 {
+            margin-top: 0;
+        }
+
+        #toc ul {
+            padding: 0;
+            list-style: none;
+        }
+
+        #toc ul li {
+            margin-bottom: 10px;
+        }
+
+        #toc ul li a {
+            color: #4682B4;
+            text-decoration: none;
+        }
+
+        #toc ul li a:hover {
+            text-decoration: underline;
+        }
+
+        /* Nội dung chính của trang */
+        .content {
+            padding: 45px;
+            text-align: center;
+        }
+
+        h1.typing {
+            font-size: 1.5rem;
+            color: white;
+            border-right: 3px solid white;
+            white-space: nowrap;
+            overflow: hidden;
+            width: 0; /* Hiển thị ban đầu là 0 để hiệu ứng typing hoạt động */
+            animation: typing 4s steps(30) 1s forwards, blink 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes blink {
+            50% {
+                border-color: transparent;
+            }
+        }
+
+        p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 20px auto;
+        }
+
+        /* Thêm khoảng cách cho nội dung dài để thử nghiệm cuộn */
+        .content .spacer {
+            height: 20px; /* Để kiểm tra chức năng cuộn */
+        }
+    </style> 
+</head> 
+<body> 
+    <!-- Giao diện RiceMode --> 
+    <div class="rice-mode"> 
+        <div class="icon"></div> 
+        <div class="text">
+            RiceMode
+        </div> 
+    </div> 
+    <!-- Nút mục lục --> 
+    <button id="toggle-btn">≡</button> 
+    <!-- Mục lục --> 
+    <div id="toc"> 
+        <h4>Mục Lục</h4> 
+        <ul> 
+            <li><a href="https://guns.lol/bigzdepzai">My Profile</a></li> 
+            <li><a href="#section2">Announcements</a></li> 
+            <li><a href="#section3">English Version</a></li> 
+        </ul> 
+    </div> 
+    <!-- Nội dung trang --> 
+    <div class="content"> 
+        <h1 class="typing">Welcome to RiceMode</h1> 
+        <p>Chào bạn,
+Cảm ơn bạn đã quan tâm và sử dụng script này. Trước tiên, tôi muốn nhấn mạnh rằng việc sử dụng script hoặc công cụ để cheat game cần được cân nhắc kỹ lưỡng, đặc biệt trong các trò chơi trực tuyến. Nó có thể ảnh hưởng đến trải nghiệm công bằng của cộng đồng người chơi và vi phạm quy định của nhà phát hành. Tuy nhiên, nếu bạn sử dụng với mục đích học hỏi hoặc trong môi trường cá nhân, tôi hy vọng script này sẽ mang lại sự hỗ trợ mà bạn cần.
+Script được thiết kế để tối ưu hóa thao tác, giúp bạn tiết kiệm thời gian và trải nghiệm những tính năng đặc biệt trong trò chơi. Tôi đã cố gắng đảm bảo rằng nó dễ sử dụng và hoạt động mượt mà nhất có thể. Nếu bạn gặp bất kỳ vấn đề nào khi sử dụng hoặc cần chỉnh sửa để phù hợp với trò chơi của mình, đừng ngần ngại liên hệ và đóng góp ý kiến.
+Tuy nhiên, tôi cũng khuyến khích bạn cân nhắc trước khi sử dụng trong môi trường có thể gây ảnh hưởng đến người khác. Chơi game là để giải trí và tận hưởng, và khi bạn tôn trọng quy tắc cũng như những người chơi khác, trải nghiệm sẽ trở nên thú vị và ý nghĩa hơn.
+Một lần nữa, cảm ơn bạn đã tin tưởng và sử dụng sản phẩm này. Chúc bạn có những khoảnh khắc vui vẻ và thành công trong mọi tựa game mà bạn yêu thích!
+Thân ái,
+RiceMode By BigZ
+        </p> 
+        <!-- Khoảng trắng để thử nghiệm cuộn -->
+        <div class="spacer"></div>
+    </div> 
+    <script>
+        const toggleBtn = document.getElementById('toggle-btn');
+        const toc = document.getElementById('toc');
+
+        // Thay đổi hiển thị mục lục khi nhấn nút
+        toggleBtn.addEventListener('click', () => {
+            if (toc.style.display === 'none' || toc.style.display === '') {
+                toc.style.display = 'block';
+                toggleBtn.innerHTML = '×';
+            } else {
+                toc.style.display = 'none';
+                toggleBtn.innerHTML = '≡';
+            }
+        });
+    </script> 
+</body>
+</html>
